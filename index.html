@@ -11,27 +11,25 @@
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
 
   :root {
-    --bg:        #0f1a0f;
-    --card:      #1e2a1e;
-    --border:    rgba(255,255,255,0.09);
-    --green:     #7ecb7e;
-    --gold-soft: #f0d060;
-    --cream:     #f0ece2;
-    --mist:      #c8c0b0;
-    --mid:       #7a806a;
-    --success:   #6fcf87;
-    --danger:    #e07070;
-    --radius:    14px;
+    --bg:      #0f1a0f;
+    --card:    #1e2a1e;
+    --border:  rgba(255,255,255,0.09);
+    --green:   #7ecb7e;
+    --gold:    #f0d060;
+    --cream:   #f0ece2;
+    --mist:    #c8c0b0;
+    --mid:     #7a806a;
+    --success: #6fcf87;
+    --danger:  #e07070;
+    --radius:  14px;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--cream); min-height: 100dvh; overflow-x: hidden; }
 
+  /* ── HEADER ── */
   header {
     background: linear-gradient(170deg, #1a2e1a 0%, var(--bg) 100%);
-    padding: 40px 24px 24px;
-    text-align: center;
-    position: relative; overflow: hidden;
+    padding: 40px 24px 24px; text-align: center; position: relative; overflow: hidden;
   }
   header::before {
     content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
@@ -39,60 +37,73 @@
     background: radial-gradient(circle, rgba(126,203,126,0.10) 0%, transparent 70%);
     pointer-events: none;
   }
-  .logo-img {
-    width: 100px; height: 100px;
-    border-radius: 20px;
-    object-fit: contain;
-    margin-bottom: 12px;
-    filter: drop-shadow(0 0 14px rgba(126,203,126,0.35));
-  }
-  header h1 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(1.3rem, 5vw, 1.9rem);
-    font-weight: 700; color: var(--gold-soft);
-    letter-spacing: -0.01em; line-height: 1.2;
-  }
+  .logo-img { width: 96px; height: 96px; border-radius: 20px; object-fit: contain; margin-bottom: 12px; filter: drop-shadow(0 0 14px rgba(126,203,126,0.35)); }
+  header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.3rem, 5vw, 1.9rem); font-weight: 700; color: var(--gold); letter-spacing: -0.01em; line-height: 1.2; }
   header h1 em { font-style: italic; color: var(--green); }
-  header p { margin-top: 5px; font-size: 0.73rem; font-weight: 400; color: var(--mid); letter-spacing: 0.1em; text-transform: uppercase; }
+  header p { margin-top: 5px; font-size: 0.73rem; color: var(--mid); letter-spacing: 0.1em; text-transform: uppercase; }
 
+  /* ── MAIN ── */
   main { max-width: 500px; margin: 0 auto; padding: 20px 14px 56px; display: flex; flex-direction: column; gap: 16px; }
 
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 16px; }
-  .card-title {
-    font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 0.1em; color: var(--mid); margin-bottom: 14px;
-    display: flex; align-items: center; gap: 7px;
+  /* ── MENU INICIAL ── */
+  .menu-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 24px 20px; text-align: center;
   }
+  .menu-card h2 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--gold); margin-bottom: 6px; }
+  .menu-card p { font-size: 0.8rem; color: var(--mid); margin-bottom: 20px; line-height: 1.5; }
+  .menu-btns { display: flex; flex-direction: column; gap: 12px; }
+  .menu-btn {
+    background: rgba(255,255,255,0.04); border: 1.5px solid var(--border);
+    border-radius: var(--radius); padding: 16px 14px; cursor: pointer;
+    text-align: left; transition: border-color .2s, background .2s; display: flex; align-items: center; gap: 14px;
+  }
+  .menu-btn:hover { border-color: var(--green); background: rgba(126,203,126,0.06); }
+  .menu-btn.active { border-color: var(--green); background: rgba(126,203,126,0.08); }
+  .menu-btn .icon { font-size: 1.8rem; flex-shrink: 0; }
+  .menu-btn .txt .ttl { font-size: 0.9rem; font-weight: 600; color: var(--cream); margin-bottom: 3px; }
+  .menu-btn .txt .sub { font-size: 0.74rem; color: var(--mid); line-height: 1.4; }
+
+  /* ── CARD ── */
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 16px; }
+  .card-title { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 14px; display: flex; align-items: center; gap: 7px; }
   .card-title::before { content: ''; display: inline-block; width: 3px; height: 14px; background: var(--green); border-radius: 2px; }
 
+  /* ── FIELDS ── */
   .field { margin-bottom: 12px; }
   .field:last-child { margin-bottom: 0; }
   label { display: block; font-size: 0.78rem; font-weight: 500; color: var(--mist); margin-bottom: 5px; }
   label .hint { color: var(--mid); font-weight: 300; font-size: 0.72rem; }
 
-  input[type="number"], select {
+  /* Inputs de texto formateado */
+  .money-input {
+    width: 100%; background: rgba(255,255,255,0.05); border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: 10px; color: var(--cream); font-family: 'Inter', sans-serif;
+    font-size: 1rem; font-weight: 500; padding: 11px 13px 11px 26px; outline: none;
+    transition: border-color .2s, background .2s;
+  }
+  .money-input:focus { border-color: var(--green); background: rgba(126,203,126,0.06); }
+  .money-input::placeholder { color: var(--mid); font-weight: 300; }
+
+  input[type="number"] {
     width: 100%; background: rgba(255,255,255,0.05); border: 1.5px solid rgba(255,255,255,0.12);
     border-radius: 10px; color: var(--cream); font-family: 'Inter', sans-serif;
     font-size: 1rem; font-weight: 500; padding: 11px 13px; outline: none;
     transition: border-color .2s, background .2s; -webkit-appearance: none; appearance: none;
   }
-  input[type="number"]:focus, select:focus { border-color: var(--green); background: rgba(126,203,126,0.06); }
+  input[type="number"]:focus { border-color: var(--green); background: rgba(126,203,126,0.06); }
   input[type="number"]::placeholder { color: var(--mid); font-weight: 300; }
 
   .input-wrap { position: relative; }
-  .input-wrap .prefix { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--mid); font-size: 0.85rem; pointer-events: none; }
-  .input-wrap .suffix { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--mid); font-size: 0.85rem; pointer-events: none; }
-  .input-wrap input { padding-left: 26px; }
-  .input-wrap.has-suffix input { padding-right: 30px; }
+  .input-wrap .prefix { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--mid); font-size: 0.85rem; pointer-events: none; }
 
+  /* Slider */
   .slider-wrap { display: flex; align-items: center; gap: 10px; }
-  .slider-wrap input[type="range"] {
-    flex: 1; -webkit-appearance: none; appearance: none;
-    height: 4px; background: rgba(255,255,255,0.12); border-radius: 4px; border: none; padding: 0; cursor: pointer;
-  }
+  .slider-wrap input[type="range"] { flex: 1; -webkit-appearance: none; appearance: none; height: 4px; background: rgba(255,255,255,0.12); border-radius: 4px; border: none; padding: 0; cursor: pointer; }
   .slider-wrap input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; background: var(--green); border-radius: 50%; cursor: pointer; box-shadow: 0 0 6px rgba(126,203,126,0.5); }
   .slider-val { min-width: 42px; text-align: right; font-size: 1rem; font-weight: 600; color: var(--green); }
 
+  /* Toggle */
   .toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid var(--border); }
   .toggle-row:last-of-type { border-bottom: none; }
   .toggle-label { font-size: 0.82rem; color: var(--mist); }
@@ -104,40 +115,30 @@
   .thumb { position: absolute; top: 3px; left: 3px; width: 17px; height: 17px; background: #fff; border-radius: 50%; transition: transform .2s; box-shadow: 0 1px 4px rgba(0,0,0,0.3); }
   .toggle input:checked ~ .track .thumb { transform: translateX(19px); }
 
-  .select-wrap { position: relative; }
-  .select-wrap::after { content: '▾'; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--mid); pointer-events: none; font-size: 0.8rem; }
-  select { padding-right: 30px; cursor: pointer; }
-  select option { background: #1e2a1e; color: var(--cream); }
-
-  .info-box {
-    background: rgba(126,203,126,0.07); border: 1px solid rgba(126,203,126,0.2);
-    border-radius: 10px; padding: 10px 13px; font-size: 0.77rem; color: var(--mist); line-height: 1.55;
-  }
+  .info-box { background: rgba(126,203,126,0.07); border: 1px solid rgba(126,203,126,0.2); border-radius: 10px; padding: 10px 13px; font-size: 0.77rem; color: var(--mist); line-height: 1.55; }
   .info-box strong { color: var(--green); }
 
-  .btn-calc {
-    width: 100%; background: var(--green); color: #0f1a0f; border: none; border-radius: var(--radius);
-    font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700;
-    padding: 15px; cursor: pointer; transition: transform .15s, opacity .15s;
-    box-shadow: 0 4px 20px rgba(126,203,126,0.25); letter-spacing: 0.01em;
-  }
+  /* Botones */
+  .btn-calc { width: 100%; background: var(--green); color: #0f1a0f; border: none; border-radius: var(--radius); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; padding: 15px; cursor: pointer; transition: transform .15s, opacity .15s; box-shadow: 0 4px 20px rgba(126,203,126,0.25); }
   .btn-calc:active { transform: scale(0.97); opacity: 0.9; }
+  .btn-calc.gold { background: var(--gold); box-shadow: 0 4px 20px rgba(240,208,96,0.25); }
+  .btn-reset { background: transparent; border: 1.5px solid var(--border); border-radius: var(--radius); color: var(--mid); font-family: 'Inter', sans-serif; font-size: 0.84rem; padding: 12px; cursor: pointer; transition: border-color .2s, color .2s; width: 100%; }
+  .btn-reset:hover { border-color: var(--green); color: var(--green); }
 
   .error-msg { display: none; background: rgba(224,112,112,0.12); border: 1px solid rgba(224,112,112,0.3); border-radius: 10px; padding: 10px 14px; font-size: 0.82rem; color: var(--danger); }
 
-  #results { display: none; flex-direction: column; gap: 14px; }
-  #results.visible { display: flex; }
+  /* ── RESULTADOS ── */
+  .results-wrap { display: none; flex-direction: column; gap: 14px; }
+  .results-wrap.visible { display: flex; }
 
-  .result-hero {
-    background: linear-gradient(135deg, #1a2e1a 0%, #243024 100%);
-    border: 1.5px solid rgba(126,203,126,0.35); border-radius: var(--radius);
-    padding: 26px 18px 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
-  }
+  .result-hero { background: linear-gradient(135deg, #1a2e1a 0%, #243024 100%); border: 1.5px solid rgba(126,203,126,0.35); border-radius: var(--radius); padding: 26px 18px 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .result-hero.single { grid-template-columns: 1fr; }
   .hero-block { text-align: center; }
   .hero-block .hl { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 6px; }
   .hero-block .amount { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 5.5vw, 2rem); font-weight: 700; line-height: 1; }
   .hero-block.bruto .amount { color: var(--mist); }
   .hero-block.liquido .amount { color: var(--green); }
+  .hero-block.venta .amount { color: var(--gold); }
   .hero-divider { grid-column: 1/-1; height: 1px; background: var(--border); margin: 0 -18px; }
   .hero-note { grid-column: 1/-1; text-align: center; font-size: 0.74rem; color: var(--mid); }
 
@@ -153,15 +154,16 @@
   .brow.hl-row { background: rgba(126,203,126,0.06); }
   .brow.hl-row .n { color: var(--green); font-weight: 500; }
   .brow.hl-row .v { color: var(--green); }
-  .brow.hl-gold { background: rgba(212,175,55,0.06); }
-  .brow.hl-gold .n { color: var(--gold-soft); font-weight: 500; }
-  .brow.hl-gold .v { color: var(--gold-soft); }
+  .brow.hl-gold { background: rgba(240,208,96,0.06); }
+  .brow.hl-gold .n { color: var(--gold); font-weight: 500; }
+  .brow.hl-gold .v { color: var(--gold); }
   .brow .tag { font-size: 0.65rem; padding: 2px 6px; background: rgba(255,255,255,0.07); border-radius: 4px; color: var(--mid); margin-left: 6px; font-weight: 400; }
 
   .disclaimer { font-size: 0.7rem; color: var(--mid); text-align: center; line-height: 1.55; padding: 0 6px; }
 
-  .btn-reset { background: transparent; border: 1.5px solid var(--border); border-radius: var(--radius); color: var(--mid); font-family: 'Inter', sans-serif; font-size: 0.84rem; padding: 12px; cursor: pointer; transition: border-color .2s, color .2s; width: 100%; }
-  .btn-reset:hover { border-color: var(--green); color: var(--green); }
+  /* ── SECCIONES ── */
+  .seccion { display: none; flex-direction: column; gap: 16px; }
+  .seccion.visible { display: flex; }
 </style>
 </head>
 <body>
@@ -174,271 +176,432 @@
 
 <main>
 
-  <!-- VENTA -->
-  <div class="card">
-    <div class="card-title">Valor de la venta</div>
-    <div class="field">
-      <label>Total recaudado <span class="hint">(CLP)</span></label>
-      <div class="input-wrap">
-        <span class="prefix">$</span>
-        <input type="number" id="valorVenta" inputmode="numeric" placeholder="640000" min="0">
-      </div>
+  <!-- ══ MENÚ INICIAL ══ -->
+  <div class="menu-card" id="menuInicial">
+    <h2>¿Qué deseas calcular?</h2>
+    <p>Elige una opción para comenzar</p>
+    <div class="menu-btns">
+      <button class="menu-btn" onclick="mostrarSeccion('seccionVenta')">
+        <span class="icon">💰</span>
+        <span class="txt">
+          <div class="ttl">Ingresar valor de venta</div>
+          <div class="sub">Tengo el monto de la venta y quiero saber cuánto gana cada integrante</div>
+        </span>
+      </button>
+      <button class="menu-btn" onclick="mostrarSeccion('seccionInverso')">
+        <span class="icon">🎯</span>
+        <span class="txt">
+          <div class="ttl">Calcular valor de venta</div>
+          <div class="sub">Sé cuánto quiero ganar líquido y necesito saber a cuánto vender la obra</div>
+        </span>
+      </button>
     </div>
   </div>
 
-  <!-- DESCUENTOS -->
-  <div class="card">
-    <div class="card-title">Descuentos</div>
+  <!-- ══════════════════════════════════════
+       SECCIÓN A: INGRESAR VALOR DE VENTA
+  ══════════════════════════════════════ -->
+  <div class="seccion" id="seccionVenta">
 
-    <div class="field">
-      <label>PPM <span class="hint">(Pago Provisional Mensual)</span></label>
-      <div class="slider-wrap">
-        <input type="range" id="ppmSlider" min="1" max="5" step="0.5" value="1.5"
-          oninput="document.getElementById('ppmVal').textContent=this.value+'%'">
-        <span class="slider-val" id="ppmVal">1.5%</span>
+    <button class="btn-reset" onclick="volverMenu()">← Volver al menú</button>
+
+    <div class="card">
+      <div class="card-title">Valor de la venta</div>
+      <div class="field">
+        <label>Total recaudado <span class="hint">(CLP)</span></label>
+        <div class="input-wrap">
+          <span class="prefix">$</span>
+          <input type="text" class="money-input" id="vA_venta" inputmode="numeric" placeholder="1.000.000"
+            oninput="formatMoney(this)" onkeydown="blockInvalid(event)">
+        </div>
       </div>
     </div>
 
-    <div class="toggle-row" style="margin-top:6px;">
-      <div class="toggle-label">
-        Porcentaje de venta
-        <small>Comisión de boletería o punto de venta (10–15%)</small>
+    <div class="card">
+      <div class="card-title">Descuentos</div>
+      <div class="field">
+        <label>PPM</label>
+        <div class="slider-wrap">
+          <input type="range" id="vA_ppm" min="1" max="5" step="0.5" value="1.5"
+            oninput="document.getElementById('vA_ppmVal').textContent=this.value+'%'">
+          <span class="slider-val" id="vA_ppmVal">1.5%</span>
+        </div>
       </div>
-      <label class="toggle">
-        <input type="checkbox" id="toggleVenta" onchange="toggleVentaFn()">
-        <span class="track"><span class="thumb"></span></span>
-      </label>
-    </div>
-    <div class="field" id="ventaField" style="display:none; margin-top:12px;">
-      <label>% de venta</label>
-      <div class="slider-wrap">
-        <input type="range" id="ventaSlider" min="10" max="15" step="0.5" value="10"
-          oninput="document.getElementById('ventaVal').textContent=this.value+'%'">
-        <span class="slider-val" id="ventaVal">10%</span>
+      <div class="toggle-row" style="margin-top:6px;">
+        <div class="toggle-label">
+          Porcentaje de venta
+          <small>Comisión de boletería (10–15%)</small>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="vA_togVenta" onchange="document.getElementById('vA_ventaField').style.display=this.checked?'block':'none'">
+          <span class="track"><span class="thumb"></span></span>
+        </label>
       </div>
-    </div>
-
-    <div class="field" style="margin-top:12px;">
-      <label>Gastos de producción <span class="hint">(CLP)</span></label>
-      <div class="input-wrap">
-        <span class="prefix">$</span>
-        <input type="number" id="gastos" inputmode="numeric" placeholder="0" min="0">
+      <div class="field" id="vA_ventaField" style="display:none; margin-top:12px;">
+        <label>% de venta</label>
+        <div class="slider-wrap">
+          <input type="range" id="vA_ventaPct" min="10" max="15" step="0.5" value="10"
+            oninput="document.getElementById('vA_ventaVal').textContent=this.value+'%'">
+          <span class="slider-val" id="vA_ventaVal">10%</span>
+        </div>
       </div>
-    </div>
-  </div>
-
-  <!-- COMPAÑÍA -->
-  <div class="card">
-    <div class="card-title">Compañía e integrantes</div>
-
-    <div class="field">
-      <label>% que retiene la compañía <span class="hint">(0 si no aplica)</span></label>
-      <div class="slider-wrap">
-        <input type="range" id="compSlider" min="0" max="10" step="1" value="10"
-          oninput="document.getElementById('compVal').textContent=this.value+'%'">
-        <span class="slider-val" id="compVal">10%</span>
+      <div class="field" style="margin-top:12px;">
+        <label>Gastos de producción <span class="hint">(CLP)</span></label>
+        <div class="input-wrap">
+          <span class="prefix">$</span>
+          <input type="text" class="money-input" id="vA_gastos" inputmode="numeric" placeholder="150.000"
+            oninput="formatMoney(this)" onkeydown="blockInvalid(event)">
+        </div>
       </div>
     </div>
 
-    <div class="field">
-      <label>Integrantes que participaron</label>
-      <input type="number" id="integrantes" inputmode="numeric" placeholder="4" min="1">
+    <div class="card">
+      <div class="card-title">Compañía e integrantes</div>
+      <div class="field">
+        <label>% que retiene la compañía</label>
+        <div class="slider-wrap">
+          <input type="range" id="vA_comp" min="0" max="10" step="1" value="10"
+            oninput="document.getElementById('vA_compVal').textContent=this.value+'%'">
+          <span class="slider-val" id="vA_compVal">10%</span>
+        </div>
+      </div>
+      <div class="field">
+        <label>Integrantes que participaron</label>
+        <input type="number" id="vA_integran" inputmode="numeric" placeholder="4" min="1">
+      </div>
+      <div class="info-box">Retención boleta de honorarios: <strong>15,25%</strong> (AT 2026, fija)</div>
     </div>
 
-    <div class="info-box">
-      La retención de boleta de honorarios es <strong>15,25%</strong> (AT 2026, fija).
-    </div>
-  </div>
+    <div class="error-msg" id="vA_error"></div>
+    <button class="btn-calc" onclick="calcularVenta()">Calcular honorarios ✦</button>
 
-  <div class="error-msg" id="errorMsg"></div>
-
-  <button class="btn-calc" onclick="calcular()">Calcular reparto ✦</button>
-
-  <!-- RESULTADOS -->
-  <div id="results">
-
-    <div class="result-hero">
-      <div class="hero-block bruto">
-        <div class="hl">Honorario bruto</div>
-        <div class="amount" id="res-bruto">$0</div>
+    <!-- Resultados A -->
+    <div class="results-wrap" id="vA_results">
+      <div class="result-hero">
+        <div class="hero-block bruto">
+          <div class="hl">Honorario bruto</div>
+          <div class="amount" id="vA_resBruto"></div>
+        </div>
+        <div class="hero-block liquido">
+          <div class="hl">Honorario líquido</div>
+          <div class="amount" id="vA_resLiquido"></div>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-note" id="vA_resNota"></div>
       </div>
-      <div class="hero-block liquido">
-        <div class="hl">Honorario líquido</div>
-        <div class="amount" id="res-liquido">$0</div>
+      <div class="breakdown">
+        <div class="breakdown-header">Desglose de la venta</div>
+        <div class="brow pos"><span class="n">Valor de la venta</span><span class="v" id="vA_bVenta"></span></div>
+        <div class="brow neg"><span class="n">PPM <span class="tag" id="vA_bPpmTag"></span></span><span class="v" id="vA_bPpm"></span></div>
+        <div class="brow neg" id="vA_rowVentaPct" style="display:none;"><span class="n">Descuento por venta <span class="tag" id="vA_bVentaTag"></span></span><span class="v" id="vA_bVentaPct"></span></div>
+        <div class="brow neg" id="vA_rowGastos" style="display:none;"><span class="n">Gastos de producción</span><span class="v" id="vA_bGastos"></span></div>
+        <div class="brow neg" id="vA_rowComp" style="display:none;"><span class="n">Retención compañía <span class="tag" id="vA_bCompTag"></span></span><span class="v" id="vA_bComp"></span></div>
+        <div class="brow hl-row"><span class="n">Monto a repartir</span><span class="v" id="vA_bPool"></span></div>
       </div>
-      <div class="hero-divider"></div>
-      <div class="hero-note" id="res-nota"></div>
-    </div>
-
-    <div class="breakdown">
-      <div class="breakdown-header">Desglose de la venta</div>
-      <div class="brow pos">
-        <span class="n">Valor de la venta</span>
-        <span class="v" id="br-venta">—</span>
+      <div class="breakdown">
+        <div class="breakdown-header">Por integrante</div>
+        <div class="brow neu"><span class="n">Honorario bruto / persona</span><span class="v" id="vA_bBrutoP"></span></div>
+        <div class="brow neg"><span class="n">Retención boleta <span class="tag">15,25%</span></span><span class="v" id="vA_bBoleta"></span></div>
+        <div class="brow hl-gold"><span class="n">💵 Honorario líquido</span><span class="v" id="vA_bLiquidoP"></span></div>
       </div>
-      <div class="brow neg">
-        <span class="n">PPM <span class="tag" id="br-ppm-tag">—</span></span>
-        <span class="v" id="br-ppm">—</span>
+      <div class="breakdown" id="vA_membersBlock" style="display:none;">
+        <div class="breakdown-header" id="vA_membersTitle"></div>
+        <div id="vA_membersList"></div>
       </div>
-      <div class="brow neg" id="row-venta-pct" style="display:none;">
-        <span class="n">Descuento por venta <span class="tag" id="br-venta-tag">—</span></span>
-        <span class="v" id="br-venta-pct">—</span>
-      </div>
-      <div class="brow neg" id="row-gastos" style="display:none;">
-        <span class="n">Gastos de producción</span>
-        <span class="v" id="br-gastos">—</span>
-      </div>
-      <div class="brow neg" id="row-compania" style="display:none;">
-        <span class="n">Retención compañía <span class="tag" id="br-comp-tag">—</span></span>
-        <span class="v" id="br-compania">—</span>
-      </div>
-      <div class="brow hl-row">
-        <span class="n">Monto a repartir</span>
-        <span class="v" id="br-pool">—</span>
-      </div>
+      <p class="disclaimer">Cálculo referencial. Tasa boleta 15,25% AT 2026. Consulta con un contador.</p>
+      <button class="btn-reset" onclick="resetSeccion('vA_results')">← Nueva función</button>
     </div>
 
-    <div class="breakdown">
-      <div class="breakdown-header">Por integrante</div>
-      <div class="brow neu">
-        <span class="n">Honorario bruto / persona</span>
-        <span class="v" id="br-bruto-p">—</span>
+  </div><!-- fin seccionVenta -->
+
+
+  <!-- ══════════════════════════════════════
+       SECCIÓN B: CALCULAR VALOR DE VENTA
+  ══════════════════════════════════════ -->
+  <div class="seccion" id="seccionInverso">
+
+    <button class="btn-reset" onclick="volverMenu()">← Volver al menú</button>
+
+    <div class="card">
+      <div class="card-title">¿Cuánto quiere ganar cada integrante?</div>
+      <div class="field">
+        <label>Honorario líquido deseado por persona <span class="hint">(CLP)</span></label>
+        <div class="input-wrap">
+          <span class="prefix">$</span>
+          <input type="text" class="money-input" id="vB_liquido" inputmode="numeric" placeholder="200.000"
+            oninput="formatMoney(this)" onkeydown="blockInvalid(event)">
+        </div>
       </div>
-      <div class="brow neg">
-        <span class="n">Retención boleta honorarios <span class="tag">15,25%</span></span>
-        <span class="v" id="br-boleta">—</span>
-      </div>
-      <div class="brow hl-gold">
-        <span class="n">💵 Honorario líquido a recibir</span>
-        <span class="v" id="br-liquido-p">—</span>
+      <div class="field">
+        <label>Integrantes que participan</label>
+        <input type="number" id="vB_integran" inputmode="numeric" placeholder="4" min="1">
       </div>
     </div>
 
-    <div class="breakdown" id="members-block" style="display:none;">
-      <div class="breakdown-header" id="members-title">Todos los integrantes</div>
-      <div id="members-list"></div>
+    <div class="card">
+      <div class="card-title">Parámetros de descuento</div>
+      <div class="field">
+        <label>PPM</label>
+        <div class="slider-wrap">
+          <input type="range" id="vB_ppm" min="1" max="5" step="0.5" value="1.5"
+            oninput="document.getElementById('vB_ppmVal').textContent=this.value+'%'">
+          <span class="slider-val" id="vB_ppmVal">1.5%</span>
+        </div>
+      </div>
+      <div class="toggle-row" style="margin-top:6px;">
+        <div class="toggle-label">
+          Porcentaje de venta
+          <small>Comisión de boletería (10–15%)</small>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="vB_togVenta" onchange="document.getElementById('vB_ventaField').style.display=this.checked?'block':'none'">
+          <span class="track"><span class="thumb"></span></span>
+        </label>
+      </div>
+      <div class="field" id="vB_ventaField" style="display:none; margin-top:12px;">
+        <label>% de venta</label>
+        <div class="slider-wrap">
+          <input type="range" id="vB_ventaPct" min="10" max="15" step="0.5" value="10"
+            oninput="document.getElementById('vB_ventaVal').textContent=this.value+'%'">
+          <span class="slider-val" id="vB_ventaVal">10%</span>
+        </div>
+      </div>
+      <div class="field" style="margin-top:12px;">
+        <label>Gastos de producción <span class="hint">(CLP)</span></label>
+        <div class="input-wrap">
+          <span class="prefix">$</span>
+          <input type="text" class="money-input" id="vB_gastos" inputmode="numeric" placeholder="150.000"
+            oninput="formatMoney(this)" onkeydown="blockInvalid(event)">
+        </div>
+      </div>
+      <div class="field" style="margin-top:4px;">
+        <label>% que retiene la compañía</label>
+        <div class="slider-wrap">
+          <input type="range" id="vB_comp" min="0" max="10" step="1" value="10"
+            oninput="document.getElementById('vB_compVal').textContent=this.value+'%'">
+          <span class="slider-val" id="vB_compVal">10%</span>
+        </div>
+      </div>
+      <div class="info-box" style="margin-top:4px;">Retención boleta de honorarios: <strong>15,25%</strong> (AT 2026, fija)</div>
     </div>
 
-    <p class="disclaimer">Cálculo referencial. Tasa de boleta de honorarios 15,25% según AT 2026. Consulta con un contador para casos específicos.</p>
+    <div class="error-msg" id="vB_error"></div>
+    <button class="btn-calc gold" onclick="calcularInverso()">Calcular valor de venta ✦</button>
 
-    <button class="btn-reset" onclick="resetForm()">← Nueva función</button>
-  </div>
+    <!-- Resultados B -->
+    <div class="results-wrap" id="vB_results">
+      <div class="result-hero single">
+        <div class="hero-block venta">
+          <div class="hl">Valor mínimo de venta</div>
+          <div class="amount" id="vB_resVenta"></div>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-note" id="vB_resNota"></div>
+      </div>
+      <div class="breakdown">
+        <div class="breakdown-header">Cómo se construye ese valor</div>
+        <div class="brow pos"><span class="n">Honorario líquido deseado / persona</span><span class="v" id="vB_bLiquidoP"></span></div>
+        <div class="brow neu"><span class="n">+ Retención boleta <span class="tag">15,25%</span></span><span class="v" id="vB_bBoleta"></span></div>
+        <div class="brow neu"><span class="n">= Honorario bruto / persona</span><span class="v" id="vB_bBrutoP"></span></div>
+        <div class="brow hl-row"><span class="n">× <span id="vB_bNInteg"></span> integrantes → monto a repartir</span><span class="v" id="vB_bPool"></span></div>
+        <div class="brow neu" id="vB_rowComp" style="display:none;"><span class="n">+ Retención compañía <span class="tag" id="vB_bCompTag"></span></span><span class="v" id="vB_bComp"></span></div>
+        <div class="brow neu" id="vB_rowGastos" style="display:none;"><span class="n">+ Gastos de producción</span><span class="v" id="vB_bGastos"></span></div>
+        <div class="brow neu" id="vB_rowVentaPct" style="display:none;"><span class="n">+ Comisión punto de venta <span class="tag" id="vB_bVentaTag"></span></span><span class="v" id="vB_bVentaPct"></span></div>
+        <div class="brow neu"><span class="n">+ PPM <span class="tag" id="vB_bPpmTag"></span></span><span class="v" id="vB_bPpm"></span></div>
+        <div class="brow hl-gold"><span class="n">💰 Valor mínimo de venta</span><span class="v" id="vB_bVenta"></span></div>
+      </div>
+      <p class="disclaimer">Este es el monto mínimo de recaudación para que cada integrante reciba el honorario líquido indicado. Cualquier venta sobre este valor genera excedente.</p>
+      <button class="btn-reset" onclick="resetSeccion('vB_results')">← Nuevo cálculo</button>
+    </div>
+
+  </div><!-- fin seccionInverso -->
 
 </main>
 
 <script>
-  function toggleVentaFn() {
-    document.getElementById('ventaField').style.display =
-      document.getElementById('toggleVenta').checked ? 'block' : 'none';
+/* ── FORMATO MILES ── */
+function formatMoney(el) {
+  let raw = el.value.replace(/\./g, '').replace(/[^0-9]/g, '');
+  if (raw === '') { el.value = ''; return; }
+  el.value = parseInt(raw, 10).toLocaleString('es-CL');
+}
+function blockInvalid(e) {
+  const allowed = ['Backspace','Delete','ArrowLeft','ArrowRight','Tab','Home','End'];
+  if (allowed.includes(e.key)) return;
+  if (!/[0-9]/.test(e.key)) e.preventDefault();
+}
+function parseMoney(id) {
+  const v = document.getElementById(id).value.replace(/\./g, '').trim();
+  return v === '' ? 0 : parseInt(v, 10) || 0;
+}
+
+/* ── NAVEGACIÓN ── */
+function mostrarSeccion(id) {
+  document.getElementById('menuInicial').style.display = 'none';
+  document.getElementById(id).classList.add('visible');
+}
+function volverMenu() {
+  document.querySelectorAll('.seccion').forEach(s => s.classList.remove('visible'));
+  document.getElementById('menuInicial').style.display = 'block';
+}
+function resetSeccion(resultsId) {
+  document.getElementById(resultsId).classList.remove('visible');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ── FORMATO SALIDA ── */
+function fmt(n) {
+  return '$ ' + Math.round(n).toLocaleString('es-CL');
+}
+
+/* ══ CÁLCULO A: VENTA → HONORARIO ══ */
+function calcularVenta() {
+  const err = document.getElementById('vA_error');
+  err.style.display = 'none';
+
+  const venta    = parseMoney('vA_venta');
+  const ppmPct   = parseFloat(document.getElementById('vA_ppm').value);
+  const usaVenta = document.getElementById('vA_togVenta').checked;
+  const ventaPct = usaVenta ? parseFloat(document.getElementById('vA_ventaPct').value) : 0;
+  const gastos   = parseMoney('vA_gastos');
+  const compPct  = parseFloat(document.getElementById('vA_comp').value);
+  const integran = Math.max(1, parseInt(document.getElementById('vA_integran').value) || 0);
+
+  if (venta <= 0) { err.textContent = 'Ingresa el valor de la venta.'; err.style.display = 'block'; return; }
+
+  const ppmMonto   = venta * ppmPct / 100;
+  const ventaMonto = venta * ventaPct / 100;
+  const trasDesc   = venta - ppmMonto - ventaMonto - gastos;
+  const compMonto  = Math.max(0, trasDesc) * compPct / 100;
+  const pool       = Math.max(0, trasDesc - compMonto);
+  const brutoPorP  = pool / integran;
+  const boletaMonto = brutoPorP * 0.1525;
+  const liquidoPorP = brutoPorP - boletaMonto;
+
+  document.getElementById('vA_resBruto').textContent   = fmt(brutoPorP);
+  document.getElementById('vA_resLiquido').textContent  = fmt(liquidoPorP);
+  document.getElementById('vA_resNota').textContent     = integran + ' integrante' + (integran>1?'s':'') + ' · ' + fmt(venta) + ' en ventas';
+
+  document.getElementById('vA_bVenta').textContent    = fmt(venta);
+  document.getElementById('vA_bPpm').textContent      = '– ' + fmt(ppmMonto);
+  document.getElementById('vA_bPpmTag').textContent   = ppmPct + '%';
+
+  show('vA_rowVentaPct', usaVenta && ventaMonto > 0);
+  document.getElementById('vA_bVentaPct').textContent  = '– ' + fmt(ventaMonto);
+  document.getElementById('vA_bVentaTag').textContent  = ventaPct + '%';
+
+  show('vA_rowGastos', gastos > 0);
+  document.getElementById('vA_bGastos').textContent   = '– ' + fmt(gastos);
+
+  show('vA_rowComp', compPct > 0);
+  document.getElementById('vA_bComp').textContent     = '– ' + fmt(compMonto);
+  document.getElementById('vA_bCompTag').textContent  = compPct + '%';
+
+  document.getElementById('vA_bPool').textContent     = fmt(pool);
+  document.getElementById('vA_bBrutoP').textContent   = fmt(brutoPorP);
+  document.getElementById('vA_bBoleta').textContent   = '– ' + fmt(boletaMonto);
+  document.getElementById('vA_bLiquidoP').textContent = fmt(liquidoPorP);
+
+  if (integran > 1) {
+    const list = document.getElementById('vA_membersList');
+    list.innerHTML = '';
+    for (let i = 1; i <= integran; i++) {
+      const r = document.createElement('div');
+      r.className = 'brow neu';
+      r.innerHTML = '<span class="n">Integrante ' + i + '</span><span class="v" style="color:var(--green)">' + fmt(liquidoPorP) + '</span>';
+      list.appendChild(r);
+    }
+    document.getElementById('vA_membersTitle').textContent = integran + ' integrantes (honorario líquido c/u)';
+    document.getElementById('vA_membersBlock').style.display = 'block';
+  } else {
+    document.getElementById('vA_membersBlock').style.display = 'none';
   }
 
-  function fmt(n) {
-    return '$ ' + Math.round(n).toLocaleString('es-CL');
-  }
+  const res = document.getElementById('vA_results');
+  res.classList.add('visible');
+  setTimeout(() => res.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+}
 
-  function calcular() {
-    document.getElementById('errorMsg').style.display = 'none';
+/* ══ CÁLCULO B: HONORARIO → VENTA (INVERSO) ══ */
+function calcularInverso() {
+  const err = document.getElementById('vB_error');
+  err.style.display = 'none';
 
-    const venta    = parseFloat(document.getElementById('valorVenta').value) || 0;
-    const ppmPct   = parseFloat(document.getElementById('ppmSlider').value) || 0;
-    const usaVenta = document.getElementById('toggleVenta').checked;
-    const ventaPct = usaVenta ? parseFloat(document.getElementById('ventaSlider').value) || 0 : 0;
-    const gastos   = parseFloat(document.getElementById('gastos').value) || 0;
-    const compPct  = parseFloat(document.getElementById('compSlider').value) || 0;
-    const integran = Math.max(1, parseInt(document.getElementById('integrantes').value) || 0);
+  const liquidoDeseado = parseMoney('vB_liquido');
+  const integran       = Math.max(1, parseInt(document.getElementById('vB_integran').value) || 0);
+  const ppmPct         = parseFloat(document.getElementById('vB_ppm').value);
+  const usaVenta       = document.getElementById('vB_togVenta').checked;
+  const ventaPct       = usaVenta ? parseFloat(document.getElementById('vB_ventaPct').value) : 0;
+  const gastos         = parseMoney('vB_gastos');
+  const compPct        = parseFloat(document.getElementById('vB_comp').value);
 
-    if (venta <= 0) {
-      const e = document.getElementById('errorMsg');
-      e.textContent = 'Ingresa el valor de la venta para calcular.';
-      e.style.display = 'block'; return;
-    }
+  if (liquidoDeseado <= 0) { err.textContent = 'Ingresa el honorario líquido deseado.'; err.style.display = 'block'; return; }
+  if (!document.getElementById('vB_integran').value) { err.textContent = 'Ingresa la cantidad de integrantes.'; err.style.display = 'block'; return; }
 
-    // 1. PPM
-    const ppmMonto   = venta * (ppmPct / 100);
-    const tras_ppm   = venta - ppmMonto;
+  /* Cálculo inverso paso a paso:
+     liquidoDeseado → bruto → pool → tras gastos y comp → tras venta y ppm → venta */
+  const boletaFactor  = 1 - 0.1525;               // líquido = bruto * 0.8475
+  const brutoPorP     = liquidoDeseado / boletaFactor;
+  const boletaMonto   = brutoPorP - liquidoDeseado;
 
-    // 2. % de venta (sobre valor original)
-    const ventaMonto = venta * (ventaPct / 100);
-    const tras_venta = tras_ppm - ventaMonto;
+  const pool          = brutoPorP * integran;
 
-    // 3. Gastos
-    const tras_gastos = tras_venta - gastos;
+  // pool = (trasGastos - gastos) * (1 - compPct/100) → necesitamos trasGastos
+  // pool = trasGastos * (1 - comp) - gastos * (1 - comp)  ... NO: comp va sobre trasGastos
+  // pool = trasGastos * (1 - comp/100)
+  // trasGastos = pool / (1 - comp/100)
+  const compFactor    = 1 - compPct / 100;
+  const trasGastos    = compFactor > 0 ? pool / compFactor : pool;
+  const compMonto     = trasGastos - pool;
 
-    // 4. Retención compañía
-    const compMonto  = Math.max(0, tras_gastos) * (compPct / 100);
-    const pool       = Math.max(0, tras_gastos - compMonto);
+  // trasGastos = trasVenta - gastos
+  const trasVentaY    = trasGastos + gastos;
+  const ventaMonto    = trasVentaY * ventaPct / (100 - ventaPct);   // despejar venta original
 
-    // 5. Por integrante
-    const brutoPorP  = pool / integran;
+  // trasVenta = venta - ppmMonto - ventaMonto
+  // trasVenta = venta*(1 - ppm/100 - ventaPct/100)   (ventaMonto = venta*ventaPct/100)
+  // venta*(1 - ppm/100 - ventaPct/100) = trasVentaY
+  const ventaFactor   = 1 - ppmPct / 100 - ventaPct / 100;
+  const venta         = ventaFactor > 0 ? trasVentaY / ventaFactor : trasVentaY;
+  const ppmMonto      = venta * ppmPct / 100;
+  const ventaPctMonto = venta * ventaPct / 100;
 
-    // 6. Boleta honorarios 15.25%
-    const boletaMonto  = brutoPorP * 0.1525;
-    const liquidoPorP  = brutoPorP - boletaMonto;
+  // — Render —
+  document.getElementById('vB_resVenta').textContent  = fmt(venta);
+  document.getElementById('vB_resNota').textContent   =
+    integran + ' integrante' + (integran>1?'s':'') + ' · $' +
+    Math.round(liquidoDeseado).toLocaleString('es-CL') + ' líquido c/u';
 
-    // — Render heroes —
-    document.getElementById('res-bruto').textContent   = fmt(brutoPorP);
-    document.getElementById('res-liquido').textContent = fmt(liquidoPorP);
-    document.getElementById('res-nota').textContent    =
-      integran + ' integrante' + (integran > 1 ? 's' : '') + ' · ' + fmt(venta) + ' en ventas';
+  document.getElementById('vB_bLiquidoP').textContent = fmt(liquidoDeseado);
+  document.getElementById('vB_bBoleta').textContent   = '+ ' + fmt(boletaMonto);
+  document.getElementById('vB_bBrutoP').textContent   = fmt(brutoPorP);
+  document.getElementById('vB_bPool').textContent     = fmt(pool);
+  document.getElementById('vB_bNInteg').textContent   = integran;
 
-    // — Desglose venta —
-    document.getElementById('br-venta').textContent   = fmt(venta);
-    document.getElementById('br-ppm').textContent     = '– ' + fmt(ppmMonto);
-    document.getElementById('br-ppm-tag').textContent = ppmPct + '%';
+  show('vB_rowComp', compPct > 0);
+  document.getElementById('vB_bComp').textContent     = '+ ' + fmt(compMonto);
+  document.getElementById('vB_bCompTag').textContent  = compPct + '%';
 
-    if (usaVenta && ventaMonto > 0) {
-      document.getElementById('row-venta-pct').style.display = 'flex';
-      document.getElementById('br-venta-pct').textContent    = '– ' + fmt(ventaMonto);
-      document.getElementById('br-venta-tag').textContent    = ventaPct + '%';
-    } else {
-      document.getElementById('row-venta-pct').style.display = 'none';
-    }
+  show('vB_rowGastos', gastos > 0);
+  document.getElementById('vB_bGastos').textContent   = '+ ' + fmt(gastos);
 
-    if (gastos > 0) {
-      document.getElementById('row-gastos').style.display = 'flex';
-      document.getElementById('br-gastos').textContent   = '– ' + fmt(gastos);
-    } else {
-      document.getElementById('row-gastos').style.display = 'none';
-    }
+  show('vB_rowVentaPct', usaVenta && ventaPctMonto > 0);
+  document.getElementById('vB_bVentaPct').textContent = '+ ' + fmt(ventaPctMonto);
+  document.getElementById('vB_bVentaTag').textContent = ventaPct + '%';
 
-    if (compPct > 0) {
-      document.getElementById('row-compania').style.display = 'flex';
-      document.getElementById('br-compania').textContent    = '– ' + fmt(compMonto);
-      document.getElementById('br-comp-tag').textContent    = compPct + '%';
-    } else {
-      document.getElementById('row-compania').style.display = 'none';
-    }
+  document.getElementById('vB_bPpm').textContent      = '+ ' + fmt(ppmMonto);
+  document.getElementById('vB_bPpmTag').textContent   = ppmPct + '%';
+  document.getElementById('vB_bVenta').textContent    = fmt(venta);
 
-    document.getElementById('br-pool').textContent    = fmt(pool);
-    document.getElementById('br-bruto-p').textContent = fmt(brutoPorP);
-    document.getElementById('br-boleta').textContent  = '– ' + fmt(boletaMonto);
-    document.getElementById('br-liquido-p').textContent = fmt(liquidoPorP);
+  const res = document.getElementById('vB_results');
+  res.classList.add('visible');
+  setTimeout(() => res.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+}
 
-    // — Todos los integrantes —
-    if (integran > 1) {
-      const list = document.getElementById('members-list');
-      list.innerHTML = '';
-      for (let i = 1; i <= integran; i++) {
-        const row = document.createElement('div');
-        row.className = 'brow neu';
-        row.innerHTML = '<span class="n">Integrante ' + i + '</span><span class="v" style="color:var(--green)">' + fmt(liquidoPorP) + '</span>';
-        list.appendChild(row);
-      }
-      document.getElementById('members-title').textContent = integran + ' integrantes (honorario líquido c/u)';
-      document.getElementById('members-block').style.display = 'block';
-    } else {
-      document.getElementById('members-block').style.display = 'none';
-    }
-
-    const res = document.getElementById('results');
-    res.classList.add('visible');
-    setTimeout(() => res.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
-  }
-
-  function resetForm() {
-    document.getElementById('results').classList.remove('visible');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+/* ── HELPERS ── */
+function show(id, visible) {
+  document.getElementById(id).style.display = visible ? 'flex' : 'none';
+}
 </script>
 </body>
 </html>
